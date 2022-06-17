@@ -2,11 +2,12 @@ package week6;
 
 import java.util.*;
 
-public class EmployeeManager{
+public class EmployeeManager implements Iterable<Employee>{
 
     protected List<Employee> employees;
 
     public EmployeeManager() {
+
         this.employees = new ArrayList<>();
     }
 
@@ -25,4 +26,28 @@ public class EmployeeManager{
                 '}';
     }
 
+    @Override
+    public Iterator<Employee> iterator() {
+        return new EmployeeIterator();
+    }
+
+
+    class EmployeeIterator implements Iterator<Employee>{
+
+        private int index;
+
+        @Override
+        public boolean hasNext() {
+            return index < employees.size();
+        }
+
+        @Override
+        public Employee next() {
+            if(hasNext()){
+                return employees.get(index ++);
+            }
+
+            throw new NoSuchElementException();
+        }
+    }
 }

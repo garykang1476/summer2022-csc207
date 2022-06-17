@@ -1,0 +1,4 @@
+Gary Kang,2350
+Dino,2500
+Martin,3000
+JoJo,100
